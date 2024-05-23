@@ -44,7 +44,7 @@ def lerInt(txt):
         return n
 
 
-# Declaração da variável com o nome dos arquivos necessários para o registro dos dados, para facilitar na escrita do
+# Declaração das variáveis com os nomes dos arquivos necessários para o registro dos dados, para facilitar na escrita do
 # código
 arqAlunos = 'alunos.txt'
 arqApresentacoes = 'apresentacoes.txt'
