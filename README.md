@@ -2,7 +2,7 @@
 # Python - Challenge - DataSphere 
 👋 Bem-vindo a nossa Sprint 1 de Python, é um imenso prazer apresentar este projeto!
 
-## ![Data Sphere1000x1000](https://github.com/ianmonteirom/CP2-Edge/assets/152393807/0fe80a9b-6290-417d-8367-2abe3824d0b0)
+![Data Sphere1000x1000](https://github.com/ianmonteirom/CP2-Edge/assets/152393807/0fe80a9b-6290-417d-8367-2abe3824d0b0)
 ## Data Sphere
 É uma empresa fictícia representando nossa equipe, 
 formada pelos alunos: 
