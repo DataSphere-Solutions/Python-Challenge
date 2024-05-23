@@ -45,6 +45,13 @@ Logo da nossa equipe
 ![image](https://github.com/DataSphere-Solutions/Python-Challenge/assets/152393807/463d4125-6e03-4e0b-8e36-0657ac2970e0)
 ![image](https://github.com/DataSphere-Solutions/Python-Challenge/assets/152393807/8569b50b-4997-401f-a14e-96012fbc3326)
 ![image](https://github.com/DataSphere-Solutions/Python-Challenge/assets/152393807/a8bdbd69-d062-495f-af8f-851187f8b5b4)
+![image](https://github.com/DataSphere-Solutions/Python-Challenge/assets/152393807/781ca717-39c5-428d-876e-656999734743)
+![image](https://github.com/DataSphere-Solutions/Python-Challenge/assets/152393807/367501b3-515d-48fa-b7df-59f71bef4e44)
+![image](https://github.com/DataSphere-Solutions/Python-Challenge/assets/152393807/00bcfb4f-9443-403c-8a7d-f6268887c6ca)
+![image](https://github.com/DataSphere-Solutions/Python-Challenge/assets/152393807/6464fffe-73ae-47c7-bcd7-8dbce394636a)
+![image](https://github.com/DataSphere-Solutions/Python-Challenge/assets/152393807/c209dbcc-2148-4a68-85d3-622ebefdfe03)
+- Todo esse programa será utilizado por nós da Data Sphere para fins de organização dos dados. Poderá até mesmo ser utilizado pelos professores, caso necessário.
+
 
 
 
