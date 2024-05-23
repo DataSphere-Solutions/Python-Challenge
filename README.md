@@ -1,3 +1,4 @@
+## ![image](https://github.com/DataSphere-Solutions/Python-Challenge/assets/152393807/5cefd3e4-9edf-46b6-9976-108b7c2a177a)
 # Python - Challenge - DataSphere 
 Bem-vindo a nossa sprint de Python!
 É um imenso prazer apresentar este projeto!
