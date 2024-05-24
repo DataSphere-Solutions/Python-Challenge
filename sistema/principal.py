@@ -2,7 +2,7 @@
 from funcoes import *
 
 # Função para caso os arquivos necessários para registrar os dados não existam, cria automaticamente
-validarArquivos(arqAlunos, arqApresentacoes, arqVisitas, arqPasseios)
+validar_arquivos(arq_alunos, arq_apresentacoes, arq_visitas, arq_passeios)
 
 # Função com o conteúdo do programa principal
-programaPrincipal()
+programa_principal()

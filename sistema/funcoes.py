@@ -2,8 +2,8 @@
 from time import sleep
 
 # Declaração de variáveis de cores no terminal
-limpaCor, vermelho, verde, amarelo, azul, azulClaro = ('\033[m', '\033[31m', '\033[32m', '\033[33m', '\033[34m',
-                                                       '\033[36m')
+limpaCor, vermelho, verde, amarelo, azul, azul_claro = ('\033[m', '\033[31m', '\033[32m', '\033[33m', '\033[34m',
+                                                        '\033[36m')
 
 
 # Função que retorna uma linha de acordo com o tamanho desejado
@@ -32,7 +32,7 @@ def menu(opcoes):
 
 
 # Função que lê um input de um número inteiro sem dar erro e crashar o programa
-def lerInt(txt):
+def ler_int(txt):
     try:
         n = int(input(txt))
     except ValueError:
@@ -43,25 +43,25 @@ def lerInt(txt):
 
 # Declaração das variáveis com os nomes dos arquivos necessários para o registro dos dados, para facilitar na escrita do
 # código
-arqAlunos = 'alunos.txt'
-arqApresentacoes = 'apresentacoes.txt'
-arqVisitas = 'visitas.txt'
-arqPasseios = 'passeios.txt'
+arq_alunos = 'alunos.txt'
+arq_apresentacoes = 'apresentacoes.txt'
+arq_visitas = 'visitas.txt'
+arq_passeios = 'passeios.txt'
 
 
-def validarArquivos(arqal, arqap, arqvis, arqpas):
-    if not existeArquivo(arqal):
-        criarArquivo(arqal)
-    if not existeArquivo(arqap):
-        criarArquivo(arqap)
-    if not existeArquivo(arqvis):
-        criarArquivo(arqvis)
-    if not existeArquivo(arqpas):
-        criarArquivo(arqpas)
+def validar_arquivos(arqal, arqap, arqvis, arqpas):
+    if not existe_arquivo(arqal):
+        criar_arquivo(arqal)
+    if not existe_arquivo(arqap):
+        criar_arquivo(arqap)
+    if not existe_arquivo(arqvis):
+        criar_arquivo(arqvis)
+    if not existe_arquivo(arqpas):
+        criar_arquivo(arqpas)
 
 
 # Função que checa se um arquivo existe ou não, retornando True se existe ou False caso não
-def existeArquivo(nome):
+def existe_arquivo(nome):
     try:
         a = open(nome, 'rt')
     except:
@@ -73,7 +73,7 @@ def existeArquivo(nome):
 
 
 # Função que cria um arquivo
-def criarArquivo(nome):
+def criar_arquivo(nome):
     try:
         a = open(nome, 'wt+')
     except:
@@ -89,43 +89,43 @@ def criarArquivo(nome):
 espaco = ''
 
 
-def programaPrincipal():
+def programa_principal():
     while True:
         menu(opcoes)
-        opcao = lerInt(f'{verde}Sua escolha: {limpaCor}')
+        opcao = ler_int(f'{verde}Sua escolha: {limpaCor}')
         match opcao:
             case 1:
-                lerArquivo(arqAlunos)
+                ler_arquivo(arq_alunos)
             case 2:
                 cabecalho('Cadastrar novo Aluno')
                 nome = str(input('Nome do aluno: ')).strip().capitalize()
-                idade = lerInt('Idade do aluno: ')
+                idade = ler_int('Idade do aluno: ')
                 turma = str(input('Turma do aluno: ')).strip().upper()
-                cadastrarAluno(arqAlunos, nome, idade, turma)
+                cadastrar_aluno(arq_alunos, nome, idade, turma)
             case 3:
-                lerArquivo(arqApresentacoes)
+                ler_arquivo(arq_apresentacoes)
             case 4:
                 cabecalho('Agendar nova Apresentação')
                 tema = str(input('Tema/Conteúdo da Apresentação: ')).strip().capitalize()
-                dia = lerInt('Dia: ')
-                mes = lerInt('Mês: ')
-                cadastrarApresentacao(arqApresentacoes, tema, dia, mes)
+                dia = ler_int('Dia: ')
+                mes = ler_int('Mês: ')
+                cadastrar_apresentacao(arq_apresentacoes, tema, dia, mes)
             case 5:
-                lerArquivo(arqVisitas)
+                ler_arquivo(arq_visitas)
             case 6:
                 cabecalho('Agendar nova Visita')
                 nome_piloto = str(input('Nome do Piloto: ')).strip().capitalize()
-                dia = lerInt('Dia: ')
-                mes = lerInt('Mês: ')
-                cadastrarVisita(arqVisitas, nome_piloto, dia, mes)
+                dia = ler_int('Dia: ')
+                mes = ler_int('Mês: ')
+                cadastrar_visita(arq_visitas, nome_piloto, dia, mes)
             case 7:
-                lerArquivo(arqPasseios)
+                ler_arquivo(arq_passeios)
             case 8:
                 cabecalho('Agendar novo Passeio Escolar')
                 local = str(input('Local do Passeio: '))
-                dia = lerInt('Dia: ')
-                mes = lerInt('Mês: ')
-                cadastrarPasseio(arqPasseios, local, dia, mes)
+                dia = ler_int('Dia: ')
+                mes = ler_int('Mês: ')
+                cadastrar_passeio(arq_passeios, local, dia, mes)
             case 9:
                 print(linha(42))
                 print(f'{vermelho}Obrigado por utilizar o sistema!{limpaCor}')
@@ -133,30 +133,30 @@ def programaPrincipal():
 
 
 # Função que lê o conteúdo de um arquivo
-def lerArquivo(nome):
+def ler_arquivo(nome):
     try:
         a = open(nome, 'rt')
     except:
         print(f'{vermelho}Erro! Não foi possível ler o arquivo.{limpaCor}')
     else:
-        if nome == arqAlunos:
+        if nome == arq_alunos:
             cabecalho('Alunos Registrados no Sistema')
-        elif nome == arqApresentacoes:
+        elif nome == arq_apresentacoes:
             cabecalho('Apresentações Agendadas no Sistema')
-        elif nome == arqVisitas:
+        elif nome == arq_visitas:
             cabecalho('Visitas Agendadas no Sistema')
-        elif nome == arqPasseios:
+        elif nome == arq_passeios:
             cabecalho('Passeios Escolares Agendados no Sistema')
         for linhas in a:
             dado = linhas.split(';')
             dado[2] = dado[2].replace('\n', '')
-            if nome == arqAlunos:
+            if nome == arq_alunos:
                 print(f'Nome: {dado[0]:<15} {espaco:>10}Idade: {dado[1]:>5} {espaco:>10}Turma: {dado[2]:>15}')
-            elif nome == arqApresentacoes:
+            elif nome == arq_apresentacoes:
                 print(f'Tema: {dado[0]:<50} {espaco:>15}Data: {dado[1]}/{dado[2]}\t')
-            elif nome == arqVisitas:
+            elif nome == arq_visitas:
                 print(f'Nome do Piloto: {dado[0]:<40} {espaco:>15}Data: {dado[1]}/{dado[2]}\t')
-            elif nome == arqPasseios:
+            elif nome == arq_passeios:
                 print(f'Local: {dado[0]:<48} {espaco:>15}Data: {dado[1]}/{dado[2]}\t')
         sleep(2)
     finally:
@@ -164,7 +164,7 @@ def lerArquivo(nome):
 
 
 # Função que cadastra um novo aluno no sistema
-def cadastrarAluno(arquivo, nome='desconhecido', idade=0, turma='desconhecida'):
+def cadastrar_aluno(arquivo, nome='desconhecido', idade=0, turma='desconhecida'):
     try:
         a = open(arquivo, 'at')
     except:
@@ -175,7 +175,7 @@ def cadastrarAluno(arquivo, nome='desconhecido', idade=0, turma='desconhecida'):
 
 
 # Função que agenda uma nova apresentação no sistema
-def cadastrarApresentacao(arquivo, tema='desconhecido', dia=0, mes=0):
+def cadastrar_apresentacao(arquivo, tema='desconhecido', dia=0, mes=0):
     try:
         a = open(arquivo, 'at')
     except:
@@ -185,7 +185,7 @@ def cadastrarApresentacao(arquivo, tema='desconhecido', dia=0, mes=0):
         a.close()
 
 
-def cadastrarVisita(arquivo, nome='desconhecido', dia=0, mes=0):
+def cadastrar_visita(arquivo, nome='desconhecido', dia=0, mes=0):
     try:
         a = open(arquivo, 'at')
     except:
@@ -195,7 +195,7 @@ def cadastrarVisita(arquivo, nome='desconhecido', dia=0, mes=0):
         a.close()
 
 
-def cadastrarPasseio(arquivo, local='desconhecido', dia=0, mes=0):
+def cadastrar_passeio(arquivo, local='desconhecido', dia=0, mes=0):
     try:
         a = open(arquivo, 'at')
     except:
