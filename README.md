@@ -1,4 +1,4 @@
-## ![image](https://github.com/DataSphere-Solutions/Python-Challenge/assets/152393807/5cefd3e4-9edf-46b6-9976-108b7c2a177a){: style="text-align:center"}
+## ![image](https://github.com/DataSphere-Solutions/Python-Challenge/assets/152393807/5cefd3e4-9edf-46b6-9976-108b7c2a177a) style="display:block;margin:auto;"
 # Python - Challenge - DataSphere 
 👋 Olá, bem-vindo ao nosso trabalho da entrega da Sprint 1 de Computational Thinking with Python! Nós somos a empresa Data Sphere da turma 1ESPH, e é um imenso prazer apresentar este projeto.
 
