@@ -5,4 +5,4 @@ from funcoes import *
 validarArquivos(arqAlunos, arqApresentacoes, arqVisitas, arqPasseios)
 
 # Função com o conteúdo do programa principal
-lerEscolha()
+menu()

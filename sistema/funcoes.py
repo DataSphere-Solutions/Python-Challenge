@@ -89,7 +89,7 @@ def criarArquivo(nome):
 espaco = ''
 
 
-def lerEscolha():
+def menu():
     while True:
         menu(opcoes)
         opcao = lerInt(f'{verde}Sua escolha: {limpaCor}')
