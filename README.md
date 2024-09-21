@@ -36,6 +36,14 @@ Logo da nossa equipe
 - E por último, planejamos agendar passeios escolares para pistas de corrida, e para marcas que competem na Fórmula E.
 - Tudo isso irá introduzir os alunos ao meio da Fórmula E, trazendo uma maior visibilidade a modalidade.
 
+
+## Atualizações do sistema novo
+1. Menu atualizado, agora cada o menu é composto por cada tema (alunos, apresentações, pilotos, visitas) e sair do programa. Ao selecionar um tema, outro menu com opções de operação abre (adicionar um item, remover, alterar, voltar para o menu principal)
+2. Funções de tratamento de arquivos atualizadas (with open() adicionado ao código fonte no lugar do método antigo)
+3. Nome das variáveis de cor de texto alteradas
+4. Lógica de tratamento de dados dos arquivos atualizada (utilização de dicionários para tratar os dados)
+
+
 ## 🐍 O nosso sistema em Python
 - Para auxiliar na organização das atividades da parceria com as escolas, desenvolvemos um programa em Python que armazena dados importantes, como:
   - Registro dos alunos interessados nas atividades (apresentações, competições, passeios, etc);

@@ -24,7 +24,7 @@ opcoes = ['Ver Registro de Alunos', 'Cadastrar novo Aluno', 'Ver Apresentações
           'Agendar novo Passeio Escolar', 'Sair do Sistema']
 
 
-# Função que printa o menu de opções do sistema
+# Função que printa o menu de opções do sistema_antigo
 def menu(opcoes):
     cabecalho('Sistema de Registro para as Escolas')
     for i in range(len(opcoes)):
@@ -128,7 +128,7 @@ def programa_principal():
                 cadastrar_passeio(arq_passeios, local, dia, mes)
             case 9:
                 print(linha(42))
-                print(f'{vermelho}Obrigado por utilizar o sistema!{limpaCor}')
+                print(f'{vermelho}Obrigado por utilizar o sistema_1.0!{limpaCor}')
                 break
 
 
@@ -163,7 +163,7 @@ def ler_arquivo(nome):
         a.close()
 
 
-# Função que cadastra um novo aluno no sistema
+# Função que cadastra um novo aluno no sistema_antigo
 def cadastrar_aluno(arquivo, nome='desconhecido', idade=0, turma='desconhecida'):
     try:
         a = open(arquivo, 'at')
@@ -174,7 +174,7 @@ def cadastrar_aluno(arquivo, nome='desconhecido', idade=0, turma='desconhecida')
         a.close()
 
 
-# Função que agenda uma nova apresentação no sistema
+# Função que agenda uma nova apresentação no sistema_antigo
 def cadastrar_apresentacao(arquivo, tema='desconhecido', dia=0, mes=0):
     try:
         a = open(arquivo, 'at')
