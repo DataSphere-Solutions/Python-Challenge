@@ -219,7 +219,7 @@ def remover_item(arq, input_tema):
     print(dados)
 
 
-def limpar_arquivo(arq, input_tema):
+def limpar_arquivo(arq):
     confirmar = str(input(f'{cor_vermelho}Deseja mesmo apagar todos os dados deste arquivo?'
                           f' Digite "SIM" para confirmar. {limpaCor}')).strip().upper()
     if confirmar == 'SIM':
