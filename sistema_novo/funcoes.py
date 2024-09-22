@@ -161,6 +161,7 @@ def adicionar_item(arq: str, input_tema: str) -> None:
                 nome = str(input('Digite o nome do aluno: ')).strip().upper()
                 idade = ler_int('Digite a idade do aluno: ')
                 arquivo.write(f'{rm},{nome},{idade}\n')
+                print(f'{cor_verde}Dado salvo com sucesso.{limpaCor}')
             case 'Apresentações':
                 while True:
                     tema = str(input('Tema da apresentação: ')).strip().upper()
@@ -172,12 +173,14 @@ def adicionar_item(arq: str, input_tema: str) -> None:
                 mes = ler_mes('Mês da apresentação: ')
                 ano = ler_ano('Ano da apresentação: ')
                 arquivo.write(f'{tema},{dia},{mes},{ano}\n')
+                print(f'{cor_verde}Dado salvo com sucesso.{limpaCor}')
             case 'Visitas':
                 nome_piloto = str(input('Nome do piloto: ')).strip().upper()
                 dia = ler_int('Dia da visita: ')
                 mes = ler_mes('Mês da visita: ')
                 ano = ler_ano('Ano da visita: ')
                 arquivo.write(f'{nome_piloto},{dia},{mes},{ano}\n')
+                print(f'{cor_verde}Dado salvo com sucesso.{limpaCor}')
             case 'Passeios escolares':
                 local = str(input('Local do passeio: ')).strip().upper()
                 dia = ler_int('Dia do passeio: ')
@@ -185,6 +188,7 @@ def adicionar_item(arq: str, input_tema: str) -> None:
                 ano = ler_ano('Ano do passeio: ')
                 parceira = str(input('Marca parceira: ')).strip().upper()
                 arquivo.write(f'{local},{dia},{mes},{ano},{parceira}\n')
+                print(f'{cor_verde}Dado salvo com sucesso.{limpaCor}')
     sleep(1)
 
 
