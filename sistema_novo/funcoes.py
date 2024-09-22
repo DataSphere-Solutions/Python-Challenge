@@ -5,33 +5,42 @@ from time import sleep
 limpaCor, cor_vermelho, cor_verde, cor_amarelo, cor_azul, cor_azul_claro = ('\033[m', '\033[31m', '\033[32m', '\033[33m', '\033[34m',
                                                         '\033[36m')
 
-# Função que retorna uma linha de acordo com o tamanho desejado
-def linha(tam):
+def linha(tam: int) -> str:
+    """
+    Retorna uma linha horizontal com o tamanho do parâmetro passado.
+    """
     return '--' * tam
 
 
-# Função que printa um cabeçalho com o texto centralizado, entre duas linhas horizontais
-def cabecalho(txt):
+def cabecalho(txt: str) -> None:
+    """
+    Mostra na tela um texto formatado entre duas linhas horizontais, formando um cabeçalho.
+    """
     print(linha(42))
     print(txt.center(42 * 2))
     print(linha(42))
 
 
-# Lista com as opções que serão passadas como parâmetro para a função menu()
-
+# Lista com as opções de menu principal e menu dos itens que serão passadas como parâmetro para a função menu()
 opcoes_menu = ['Alunos', 'Apresentações', 'Visitas', 'Passeios escolares', 'Sair do sistema']
 opcoes_item = ['Visualizar dados', 'Adicionar novo item', 'Remover um item',
                'Limpar todos os dados do arquivo', 'Retornar para o menu principal']
 
-def menu(opcoes):
-    if opcoes_menu[1] == 'Alunos':
+def menu(opcoes: list, menu_principal = False) -> None:
+    """
+    Mostra o menu de opções formatado na tela.
+    """
+    if menu_principal:
         cabecalho('Data Sphere - Sistema de Registro para as Escolas')
         sleep(0.5)
     for i in range(len(opcoes)):
         print(f'{cor_amarelo}{i + 1} {limpaCor}- {cor_azul}{opcoes[i]}{limpaCor}')
 
 
-def opcao(opc):
+def opcao(opc: int) -> int:
+    """
+    Mostra na tela o menu de subopções de cada item, e retorna a escolha do usuário do submenu
+    """
     cabecalho(opcoes_menu[opc])
     menu(opcoes_item)
     sleep(0.5)
@@ -42,8 +51,10 @@ def opcao(opc):
         print(opcao_invalida())
 
 
-# Função que lê um input de um número inteiro sem dar erro e crashar o programa
-def ler_int(txt):
+def ler_int(txt) -> int:
+    """
+    Lê um número inteiro e trata o valor. A função só retorna o valor se for realmente um número inteiro.
+    """
     while True:
         try:
             n = int(input(txt))
@@ -53,7 +64,34 @@ def ler_int(txt):
             return n
 
 
-def opcao_invalida():
+def ler_mes(txt: str) -> int:
+    """
+    Lê um mês e trata o valor. A função só retorna o valor do mês se o valor for válido.
+    """
+    while True:
+        mes = ler_int(txt)
+        if 1 <= mes <= 12:
+            return mes
+        else:
+            print(f'{cor_vermelho}Mês inválido. Tente novamente.{limpaCor}')
+
+
+def ler_ano(txt: str) -> int:
+    """
+    Lê um ano e trata o valor. A função só retorna o valor do ano se o valor for válido.
+    """
+    while True:
+        ano = ler_int(txt)
+        if len(str(ano)) != 4 and ano < 2024:
+            print(f'{cor_vermelho}Ano inválido. Tente novamente.{limpaCor}')
+        else:
+            return ano
+
+
+def opcao_invalida() -> str:
+    """
+    Retorna uma string explicando que a opção digitada foi inválida.
+    """
     return f'{cor_vermelho}Por favor, digite uma opção válida!{limpaCor}'
 
 
@@ -64,13 +102,19 @@ arquivo_passeios = 'passeios.txt'
 lista_arquivos = [arquivo_alunos, arquivo_apresentacoes, arquivo_visitas, arquivo_passeios]
 
 
-def checar_arquivos(arquivos):
+def checar_arquivos(arquivos: list) -> None:
+    """
+    Recebe uma lista de arquivos e o passa como parâmetro para outra função.
+    """
     for i in range(len(arquivos)):
         checar_arquivo(arquivos[i])
         sleep(1)
 
 
-def checar_arquivo(arquivo):
+def checar_arquivo(arquivo: str) -> None:
+    """
+    Recebe o nome de um arquivo e checa se ele existe ou não. Caso não exista, é criado.
+    """
     check = ler_arquivo(arquivo)
     if not check:
         print(f'{cor_vermelho}Arquivo {arquivo} não encontrado no sistema. Criando...{limpaCor}')
@@ -80,7 +124,10 @@ def checar_arquivo(arquivo):
         print(f'{cor_verde}Arquivo {arquivo} encontrado.{limpaCor}')
 
 
-def criar_arquivo(arq):
+def criar_arquivo(arq: str) -> None:
+    """
+    Cria um arquivo com o nome do parâmetro passado.
+    """
     try:
         with open(arq, 'w') as arquivo:
             arquivo.write('')
@@ -90,7 +137,10 @@ def criar_arquivo(arq):
         print(f'{cor_verde}Arquivo {arq} criado com sucesso.{limpaCor}')
 
 
-def ler_arquivo(arquivo):
+def ler_arquivo(arquivo:str) -> bool:
+    """
+    Recebe o nome de um arquivo como parâmetro e tenta ler seu conteúdo. Retorna True se conseguir, e False se não.
+    """
     try:
         with open(arquivo, 'r') as arquivo:
             arquivo.read()
@@ -100,7 +150,10 @@ def ler_arquivo(arquivo):
         return False
 
 
-def adicionar_item(arq, input_tema):
+def adicionar_item(arq: str, input_tema: str) -> None:
+    """
+    Recebe o nome de um arquivo e a opção selecionada pelo usuário, e adiciona os dados ao arquivo passado.
+    """
     with open(arq, 'a', encoding='UTF-8') as arquivo:
         match input_tema:
             case 'Alunos':
@@ -116,30 +169,33 @@ def adicionar_item(arq, input_tema):
                     else:
                         break
                 dia = ler_int('Dia da apresentação: ')
-                mes = ler_int('Mês da apresentação: ')
-                ano = ler_int('Ano da apresentação: ')
+                mes = ler_mes('Mês da apresentação:')
+                ano = ler_ano('Ano da apresentação: ')
                 arquivo.write(f'{tema},{dia},{mes},{ano}\n')
             case 'Visitas':
                 nome_piloto = str(input('Nome do piloto: ')).strip().upper()
                 dia = ler_int('Dia da visita: ')
-                mes = ler_int('Mês da visita: ')
-                ano = ler_int('Ano da visita: ')
+                mes = ler_mes('Mês da visita: ')
+                ano = ler_ano('Ano da visita: ')
                 arquivo.write(f'{nome_piloto},{dia},{mes},{ano}\n')
             case 'Passeios escolares':
                 local = str(input('Local do passeio: ')).strip().upper()
                 dia = ler_int('Dia do passeio: ')
-                mes = ler_int('Mês do passeio: ')
-                ano = ler_int('Ano do passeio: ')
+                mes = ler_mes('Mês do passeio: ')
+                ano = ler_ano('Ano do passeio: ')
                 parceira = str(input('Marca parceira: ')).strip().upper()
                 arquivo.write(f'{local},{dia},{mes},{ano},{parceira}\n')
     sleep(1)
 
 
-def preencher_dados(arq):
+def preencher_dados(arq: str) -> dict:
+    """
+    Recebe o nome de um arquivo como parâmetro, converte todos os dados do arquivo para um dicionário e o retorna.
+    """
     with open(arq, 'r', encoding='UTF-8') as arquivo:
         dados = {}
-        for linha in arquivo:
-            lista_linha = linha.split(",")
+        for linha_dados in arquivo:
+            lista_linha = linha_dados.split(",")
             valores = []
             for i in range(1, len(lista_linha)):
                 valores.append(lista_linha[i].replace("\n", ""))
@@ -147,58 +203,54 @@ def preencher_dados(arq):
         return dados
 
 
-def ler_itens(arq, input_tema, alterar=False):
+def ler_itens(arq: str, input_tema: str) -> None:
+    """
+    Recebe o nome de um arquivo como parâmetro, a opção selecionada pelo usuário e mostra na tela os dados de
+    maneira formatada.
+    """
     cabecalho(f'Registros de {input_tema} no sistema')
     dados = preencher_dados(arq)
     if len(dados) == 0:
         print(f'{cor_vermelho}Nenhum dado encontrado no sistema!{limpaCor}')
         sleep(1)
     else:
-        i = 1
         match input_tema:
             case 'Alunos':
                 for chave, valor in dados.items():
-                    if alterar:
-                        print(f'{i}. ', end='')
                     print(f'{chave +':':<12} {valor[0]:>57}, {valor[1]} ANOS')
-                    i += 1
             case 'Apresentações':
                 for chave, valor in dados.items():
-                    if alterar:
-                        print(f'{i}. ', end='')
                     print(f'TEMA: {chave:<49} {'DATA: ' + valor[0]:>15}/{valor[1]}/{valor[2]}')
-                    i += 1
             case 'Visitas':
                 for chave, valor in dados.items():
-                    if alterar:
-                        print(f'{i}. ', end='')
                     print(f'PILOTO: {chave:<49} {'DATA: ' + valor[0]:>15}/{valor[1]}/{valor[2]}')
-                    i += 1
             case 'Passeios escolares':
                 for chave, valor in dados.items():
-                    if alterar:
-                        print(f'{i}. ', end='')
                     print(f'LOCAL: {chave:<28} {'DATA: ' + valor[0] + '/' + valor[1] + '/' + valor[2]:>12}'
                           f' {'PARCEIRA: ' + valor[3]:>25}')
-                    i += 1
     sleep(2)
 
 
-def remover_item(arq, input_tema):
+def remover_item(arq: str, input_tema: str) -> None:
+    """
+    Recebe o nome de um arquivo e a opção selecionada pelo usuário, e remove o dado selecionado.
+    """
     with open(arq, 'r') as arquivo:
         if len(arquivo.read()) == 0:
             print(f'{cor_vermelho}Arquivo vazio. Impossível realizar alterações.{limpaCor}')
             sleep(1.5)
             return
     dados = preencher_dados(arq)
+    print(linha(42))
     for i, (chave, valor) in enumerate(dados.items()):
         print(f'{i + 1} - {chave}: {valor}')
     input_usuario = ler_int('Digite o índice do item que deseja remover: ')
+    print(linha(42))
     chaves = list(dados.keys())
     if 1 <= input_usuario <= len(chaves):
         chave_remover = chaves[input_usuario - 1]
         dados.pop(chave_remover)
-        print(f'Item removido com sucesso: {chave_remover}')
+        print(f'{cor_verde}Item removido com sucesso: {chave_remover}{limpaCor}')
         sleep(1.5)
         with open(arq, 'w', encoding='UTF-8') as arquivo:
             match input_tema:
@@ -216,10 +268,12 @@ def remover_item(arq, input_tema):
                         arquivo.write(f'{chave},{valor[0]},{valor[1]},{valor[2]},{valor[3]}\n')
     else:
         print(f'{cor_vermelho}Índice inválido. Tente novamente.{limpaCor}')
-    print(dados)
 
 
-def limpar_arquivo(arq):
+def limpar_arquivo(arq: str):
+    """
+    Recebe o nome de um arquivo como parâmetro e limpa todo o seu conteúdo.
+    """
     confirmar = str(input(f'{cor_vermelho}Deseja mesmo apagar todos os dados deste arquivo?'
                           f' Digite "SIM" para confirmar. {limpaCor}')).strip().upper()
     if confirmar == 'SIM':
@@ -231,7 +285,10 @@ def limpar_arquivo(arq):
         return
 
 
-def ler_rm():
+def ler_rm() -> str:
+    """
+    Trata o dado do RM e o retorna devidamente tratado.
+    """
     while True:
         rm = str(input('Digite o RM do Aluno: ')).strip().upper().replace("RM", "")
         with open(arquivo_alunos, 'r', encoding='UTF-8') as alunos:

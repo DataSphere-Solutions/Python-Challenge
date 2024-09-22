@@ -3,7 +3,7 @@ from funcoes import *
 checar_arquivos(lista_arquivos)
 
 while True:
-    menu(opcoes_menu)
+    menu(opcoes_menu, menu_principal=True)
     while True:
         input_usuario = ler_int('Digite uma opção que deseja consultar: ')
         if str(input_usuario) in '12345':
@@ -25,6 +25,6 @@ while True:
                 case 3:
                     remover_item(lista_arquivos[input_usuario], opcoes_menu[input_usuario])
                 case 4:
-                    limpar_arquivo(lista_arquivos[input_usuario], opcoes_menu[input_usuario])
+                    limpar_arquivo(lista_arquivos[input_usuario])
                 case 5:
                     break
