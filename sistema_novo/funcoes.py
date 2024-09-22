@@ -82,7 +82,7 @@ def ler_ano(txt: str) -> int:
     """
     while True:
         ano = ler_int(txt)
-        if len(str(ano)) != 4 and ano < 2024:
+        if len(str(ano)) != 4 or ano < 2024:
             print(f'{cor_vermelho}Ano inválido. Tente novamente.{limpaCor}')
         else:
             return ano
@@ -169,7 +169,7 @@ def adicionar_item(arq: str, input_tema: str) -> None:
                     else:
                         break
                 dia = ler_int('Dia da apresentação: ')
-                mes = ler_mes('Mês da apresentação:')
+                mes = ler_mes('Mês da apresentação: ')
                 ano = ler_ano('Ano da apresentação: ')
                 arquivo.write(f'{tema},{dia},{mes},{ano}\n')
             case 'Visitas':
