@@ -109,6 +109,10 @@ Selecionando a opção 3:
 Selecionando a opção 4:
 ![image](https://github.com/user-attachments/assets/fc583853-6933-4fe0-8501-2df81c9a4849)
 
+## Diagrama do Projeto
+![PythonDiagrama](https://github.com/user-attachments/assets/6f9ab762-dedc-4378-8463-5c39742dd9e6)
+
+
 
 
 
