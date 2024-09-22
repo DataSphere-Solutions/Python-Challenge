@@ -2,8 +2,8 @@
 from time import sleep
 
 # Declaração de variáveis de cores no terminal
-limpaCor, cor_vermelho, cor_verde, cor_amarelo, cor_azul, cor_azul_claro = ('\033[m', '\033[31m', '\033[32m', '\033[33m', '\033[34m',
-                                                        '\033[36m')
+limpaCor, cor_vermelho, cor_verde, cor_amarelo, cor_azul, cor_azul_claro = ('\033[m', '\033[31m', '\033[32m',
+                                                                            '\033[33m', '\033[34m','\033[36m')
 
 def linha(tam: int) -> str:
     """
@@ -62,6 +62,18 @@ def ler_int(txt) -> int:
             print(f'{cor_vermelho}Número inválido.{limpaCor}')
         else:
             return n
+
+
+def ler_dia(txt: str) -> int:
+    """
+    Lê um dia e trata o valor. A função só retorna o valor do dia se o valor for válido.
+    """
+    while True:
+        dia = ler_int(txt)
+        if 1 <= dia <= 31:
+            return dia
+        else:
+            print(f'{cor_vermelho}Dia inválido. Tente novamente.{limpaCor}')
 
 
 def ler_mes(txt: str) -> int:
