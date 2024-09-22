@@ -181,21 +181,21 @@ def adicionar_item(arq: str, input_tema: str) -> None:
                         print(f'{cor_vermelho}Erro! Nome de tema muito grande.{limpaCor}')
                     else:
                         break
-                dia = ler_int('Dia da apresentação: ')
+                dia = ler_dia('Dia da apresentação: ')
                 mes = ler_mes('Mês da apresentação: ')
                 ano = ler_ano('Ano da apresentação: ')
                 arquivo.write(f'{tema},{dia},{mes},{ano}\n')
                 print(f'{cor_verde}Dado salvo com sucesso.{limpaCor}')
             case 'Visitas':
                 nome_piloto = str(input('Nome do piloto: ')).strip().upper()
-                dia = ler_int('Dia da visita: ')
+                dia = ler_dia('Dia da visita: ')
                 mes = ler_mes('Mês da visita: ')
                 ano = ler_ano('Ano da visita: ')
                 arquivo.write(f'{nome_piloto},{dia},{mes},{ano}\n')
                 print(f'{cor_verde}Dado salvo com sucesso.{limpaCor}')
             case 'Passeios escolares':
                 local = str(input('Local do passeio: ')).strip().upper()
-                dia = ler_int('Dia do passeio: ')
+                dia = ler_dia('Dia do passeio: ')
                 mes = ler_mes('Mês do passeio: ')
                 ano = ler_ano('Ano do passeio: ')
                 parceira = str(input('Marca parceira: ')).strip().upper()
