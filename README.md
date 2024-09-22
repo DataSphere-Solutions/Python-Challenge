@@ -47,6 +47,7 @@ Logo da nossa equipe
 7. Funcionalidade de apagar um item de um arquivo adicionada
 8. Funcionalidades de tratamento de valores novas adicionadas
 9. Todas as funções foram documentadas com docstrings e seus parâmetros tipados, bem como seu retorno
+ATENÇÃO: O Projeto novo está na pasta "sistema_novo". A "sistema_antigo" é a versão anterior.
 
 
 ## O nosso sistema em Python
