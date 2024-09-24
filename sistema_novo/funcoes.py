@@ -103,6 +103,9 @@ def ler_ano(txt: str) -> int:
 
 
 def ler_data(dia: int, mes: int, ano: int) -> bool:
+    """
+    Recebe os valores inteiros de dia, mês e ano, checa se a data é válida e retorna True ou False.
+    """
     dia_str = str(dia)
     mes_str = str(mes)
     ano_str = str(ano)
