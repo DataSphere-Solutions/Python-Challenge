@@ -1,6 +1,8 @@
 # Importação da função sleep() para dar um efeito de "processando" no programa
 from time import sleep
 
+from datetime import datetime
+
 # Declaração de variáveis de cores no terminal
 limpaCor, cor_vermelho, cor_verde, cor_amarelo, cor_azul, cor_azul_claro = ('\033[m', '\033[31m', '\033[32m',
                                                                             '\033[33m', '\033[34m','\033[36m')
@@ -100,6 +102,20 @@ def ler_ano(txt: str) -> int:
             return ano
 
 
+def ler_data(dia: int, mes: int, ano: int) -> bool:
+    dia_str = str(dia)
+    mes_str = str(mes)
+    ano_str = str(ano)
+
+    data_str = f'{dia_str}/{mes_str}/{ano_str}'
+
+    try:
+        data = datetime.strptime(data_str, "%d/%m/%Y")
+        return True
+    except ValueError:
+        return False
+
+
 def opcao_invalida() -> str:
     """
     Retorna uma string explicando que a opção digitada foi inválida.
@@ -181,26 +197,41 @@ def adicionar_item(arq: str, input_tema: str) -> None:
                         print(f'{cor_vermelho}Erro! Nome de tema muito grande.{limpaCor}')
                     else:
                         break
-                dia = ler_dia('Dia da apresentação: ')
-                mes = ler_mes('Mês da apresentação: ')
-                ano = ler_ano('Ano da apresentação: ')
-                arquivo.write(f'{tema},{dia},{mes},{ano}\n')
-                print(f'{cor_verde}Dado salvo com sucesso.{limpaCor}')
+                while True:
+                    dia = ler_dia('Dia da apresentação: ')
+                    mes = ler_mes('Mês da apresentação: ')
+                    ano = ler_ano('Ano da apresentação: ')
+                    if ler_data(dia, mes, ano):
+                        arquivo.write(f'{tema},{dia},{mes},{ano}\n')
+                        print(f'{cor_verde}Dado salvo com sucesso.{limpaCor}')
+                        break
+                    else:
+                        print(f'{cor_vermelho}Data inválida! Por favor tente novamente.{limpaCor}')
             case 'Visitas':
                 nome_piloto = str(input('Nome do piloto: ')).strip().upper()
-                dia = ler_dia('Dia da visita: ')
-                mes = ler_mes('Mês da visita: ')
-                ano = ler_ano('Ano da visita: ')
-                arquivo.write(f'{nome_piloto},{dia},{mes},{ano}\n')
-                print(f'{cor_verde}Dado salvo com sucesso.{limpaCor}')
+                while True:
+                    dia = ler_dia('Dia da visita: ')
+                    mes = ler_mes('Mês da visita: ')
+                    ano = ler_ano('Ano da visita: ')
+                    if ler_data(dia, mes, ano):
+                        arquivo.write(f'{nome_piloto},{dia},{mes},{ano}\n')
+                        print(f'{cor_verde}Dado salvo com sucesso.{limpaCor}')
+                        break
+                    else:
+                        print(f'{cor_vermelho}Data inválida! Por favor tente novamente.{limpaCor}')
             case 'Passeios escolares':
                 local = str(input('Local do passeio: ')).strip().upper()
-                dia = ler_dia('Dia do passeio: ')
-                mes = ler_mes('Mês do passeio: ')
-                ano = ler_ano('Ano do passeio: ')
                 parceira = str(input('Marca parceira: ')).strip().upper()
-                arquivo.write(f'{local},{dia},{mes},{ano},{parceira}\n')
-                print(f'{cor_verde}Dado salvo com sucesso.{limpaCor}')
+                while True:
+                    dia = ler_dia('Dia do pesseio: ')
+                    mes = ler_mes('Mês do passeio: ')
+                    ano = ler_ano('Ano do passeio: ')
+                    if ler_data(dia, mes, ano):
+                        arquivo.write(f'{local},{dia},{mes},{ano},{parceira}\n')
+                        print(f'{cor_verde}Dado salvo com sucesso.{limpaCor}')
+                        break
+                    else:
+                        print(f'{cor_vermelho}Data inválida! Por favor tente novamente.{limpaCor}')
     sleep(1)
 
 
