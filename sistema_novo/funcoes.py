@@ -114,6 +114,8 @@ def ler_data(dia: int, mes: int, ano: int) -> bool:
 
     try:
         data = datetime.strptime(data_str, "%d/%m/%Y")
+        if data < datetime.now():
+            return False
         return True
     except ValueError:
         return False
